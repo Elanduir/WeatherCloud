@@ -15,7 +15,7 @@ public class WeatherCache extends HttpServlet {
     SQLUtility sql = new SQLUtility();
 
     @Override
-    public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
+    public void doGet(HttpServletRequest request, HttpServletResponse resp) throws IOException {
         String requestURL = request.getRequestURI();
         String json = "{}";
         Location location = Location.INVALID.getByString(requestURL.substring("/weatherCache/".length()));
@@ -23,6 +23,9 @@ public class WeatherCache extends HttpServlet {
             List<WeatherData> weatherCache = sql.getLocationCache(location);
             json = new Gson().toJson(weatherCache);
         }
-        response.getOutputStream().print(json);
+        resp.addHeader("Access-Control-Allow-Origin","*");
+        resp.setContentType("application/json");
+        resp.setCharacterEncoding("UTF-8");
+        resp.getOutputStream().print(json);
     }
 }

@@ -18,6 +18,9 @@ public class WeatherOverview extends HttpServlet {
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         List<OverviewData> overview = sql.getStationOverview();
         String json = new Gson().toJson(overview);
+        resp.addHeader("Access-Control-Allow-Origin","*");
+        resp.setContentType("application/json");
+        resp.setCharacterEncoding("UTF-8");
         resp.getOutputStream().print(json);
     }
 }

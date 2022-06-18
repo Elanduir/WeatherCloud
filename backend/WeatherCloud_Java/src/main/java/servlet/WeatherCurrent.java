@@ -9,21 +9,21 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.util.List;
 
 public class WeatherCurrent extends HttpServlet {
 
     SQLUtility sql = new SQLUtility();
 
     @Override
-    public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
-        String requestURL = request.getRequestURI();
-        String json = "{}";
-        Location location = Location.INVALID.getByString(requestURL.substring("/weatherCurrent/".length()));
-        if(location != Location.INVALID){
-            WeatherData weatherData = sql.getCurrentDataByStation(location);
-            json = new Gson().toJson(weatherData);
-        }
-        response.getOutputStream().print(json);
+    public void doGet(HttpServletRequest request, HttpServletResponse resp) throws IOException {
+
+        List<WeatherData> data = sql.getCurrentData();
+        String json = new Gson().toJson(data);
+        resp.addHeader("Access-Control-Allow-Origin","*");
+        resp.setContentType("application/json");
+        resp.setCharacterEncoding("UTF-8");
+        resp.getOutputStream().print(json);
     }
 
 }

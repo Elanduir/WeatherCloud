@@ -31,21 +31,33 @@ public class DefaultResponse extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        resp.addHeader("Access-Control-Allow-Origin","*");
+        resp.setContentType("application/json");
+        resp.setCharacterEncoding("UTF-8");
         resp.getOutputStream().print(invalidRequest);
     }
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        resp.addHeader("Access-Control-Allow-Origin","*");
+        resp.setContentType("application/json");
+        resp.setCharacterEncoding("UTF-8");
         resp.getOutputStream().print(invalidRequest);
     }
 
     @Override
     protected void doPut(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        resp.addHeader("Access-Control-Allow-Origin","*");
+        resp.setContentType("application/json");
+        resp.setCharacterEncoding("UTF-8");
         resp.getOutputStream().print(invalidRequest);
     }
 
     @Override
     protected void doDelete(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        resp.addHeader("Access-Control-Allow-Origin","*");
+        resp.setContentType("application/json");
+        resp.setCharacterEncoding("UTF-8");
         resp.getOutputStream().print(invalidRequest);
     }
 

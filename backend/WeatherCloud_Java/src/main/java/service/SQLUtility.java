@@ -21,7 +21,7 @@ public class SQLUtility {
     public SQLUtility(){
         try{
             Class.forName("com.mysql.cj.jdbc.Driver");
-            this.db = DriverManager.getConnection("jdbc:mysql://192.168.10.74:3306/db_weather", "root", "wasser1");
+            this.db = DriverManager.getConnection("jdbc:mysql://192.168.10.73:3306/db_weather", "root", "wasser1");
             stmt = db.createStatement();
 
         }catch(Exception e){
@@ -74,6 +74,25 @@ public class SQLUtility {
             e.printStackTrace();
         }
         return locationCache;
+    }
+
+    public List<WeatherData> getCurrentData(){
+        List<WeatherData> data = new ArrayList<>();
+        for(Location loc : Location.values()){
+            if(loc != Location.INVALID){
+                String statement = "SELECT * FROM " + loc.toString() + "_cache order by date_created desc limit 1";
+                try{
+                    ResultSet rs = stmt.executeQuery(statement);
+                    while(rs.next()){
+                        data.add(new WeatherData(loc, new SimpleDateFormat(PATTERN).format(rs.getTimestamp(1)), rs.getDouble(2), rs.getDouble(3), rs.getDouble(4)));
+                    }
+                }catch(Exception e){
+                    e.printStackTrace();
+                }
+
+            }
+        }
+        return data;
     }
 
 
