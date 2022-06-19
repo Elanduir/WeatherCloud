@@ -1,6 +1,6 @@
 .stations{
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     padding: 10px;
 }
 
@@ -15,7 +15,14 @@
     margin-right: 10px;
 }
 
+.sensors{
+    display:flex;
+    flex-direction: row;
+    padding: 10px;
+}
+
 .container{
-    justify-content: center;
     display: flex;
+    width: 100%;
+    justify-content: space-between;
 }

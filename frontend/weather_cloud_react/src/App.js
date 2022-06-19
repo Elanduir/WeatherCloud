@@ -1,4 +1,5 @@
 import './App.css';
+import SensorData from './components/SensorData';
 import StationOverview from "./components/StationOverview";
 import WeatherData from './components/WeatherData';
 
@@ -7,8 +8,14 @@ function App() {
     <div>
       <h1>Weather Data</h1>
       <div className="container">
-        <WeatherData/>
+        <div>
+          <SensorData/>
+        </div>
+        <div>
+          <WeatherData/>
+        </div>
       </div>
+      
     </div>
     
   );
