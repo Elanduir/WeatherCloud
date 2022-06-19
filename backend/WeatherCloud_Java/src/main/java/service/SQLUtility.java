@@ -97,7 +97,7 @@ public class SQLUtility {
         try{
             ResultSet rs = stmt.executeQuery(statement);
             while(rs.next()){
-                data.add(new SensorData(rs.getTimestamp(1), rs.getString(2), rs.getDouble(3), rs.getDouble(4)));
+                data.add(new SensorData(new SimpleDateFormat(PATTERN).format(rs.getTimestamp(1)), rs.getString(2), rs.getDouble(3), rs.getDouble(4)));
             }
         }catch(Exception e){
             e.printStackTrace();
@@ -106,19 +106,38 @@ public class SQLUtility {
 
     }
 
-    public List<SensorData> getAllCurrentSensor(){
+    public List<SensorData> getAllSensorCurrent(){
         List<SensorData> data = new ArrayList<>();
         for(SensorID sid : SensorID.values()){
-            String statement = "Select * from " + sid.toString() + " order by date_created desc limit 1;";
-            try{
-                ResultSet rs = stmt.executeQuery(statement);
-                while(rs.next()){
-                    data.add(new SensorData(rs.getTimestamp(1), rs.getString(2), rs.getDouble(3), rs.getDouble(4)));
+            if(sid != SensorID.INVALID){
+                String statement = "Select * from " + sid.toString() + " order by date_created desc limit 1;";
+                try{
+                    ResultSet rs = stmt.executeQuery(statement);
+                    while(rs.next()){
+                        data.add(new SensorData(new SimpleDateFormat(PATTERN).format(rs.getTimestamp(1)), rs.getString(2), rs.getDouble(3), rs.getDouble(4)));
+                    }
+                }catch(Exception e){
+                    e.printStackTrace();
                 }
-            }catch(Exception e){
-                e.printStackTrace();
             }
         }
+        return data;
+    }
+
+    public List<SensorOverview> getAllSensor(Boolean all){
+        List<SensorOverview> data = new ArrayList<>();
+
+        String statement = "select * from v_sensorOverview order by Date desc";
+        statement += (all) ? ";" : " limit 1;";
+        try{
+            ResultSet rs = stmt.executeQuery(statement);
+            while(rs.next()){
+                data.add(new SensorOverview(new SimpleDateFormat(PATTERN).format(rs.getTimestamp(1)), rs.getDouble(2), rs.getDouble(3), rs.getDouble(4), rs.getDouble(5)));
+            }
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+
         return data;
     }
 
@@ -127,7 +146,7 @@ public class SQLUtility {
                 "(date_created, sensor_id, temperature, humidity) VALUES(?, ?, ?, ?);";
         try{
             PreparedStatement pstmt = db.prepareStatement(statement);
-            pstmt.setTimestamp(1, sensorData.getDate());
+            pstmt.setTimestamp(1, Timestamp.valueOf(sensorData.getDate()));
             pstmt.setString(2, sensorData.getId());
             pstmt.setDouble(3, sensorData.getTemp());
             pstmt.setDouble(4, sensorData.getHum());

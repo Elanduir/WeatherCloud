@@ -4,12 +4,12 @@ import java.sql.Date;
 import java.sql.Timestamp;
 
 public class SensorData {
-    final Timestamp timestamp;
+    final String timestamp;
     final String id;
     final double temp;
     final double hum;
 
-    public SensorData(Timestamp timestamp, String id, double temp, double hum) {
+    public SensorData(String timestamp, String id, double temp, double hum) {
         this.timestamp = timestamp;
         this.id = id;
         this.temp = temp;
@@ -21,7 +21,7 @@ public class SensorData {
         return id + "\n" + timestamp + "\n" + temp + "\n" + hum;
     }
 
-    public Timestamp getDate() {
+    public String getDate() {
         return timestamp;
     }
 

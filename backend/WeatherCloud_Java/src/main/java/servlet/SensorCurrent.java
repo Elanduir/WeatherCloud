@@ -2,7 +2,6 @@ package servlet;
 
 import com.google.gson.Gson;
 import model.SensorData;
-import model.WeatherData;
 import service.SQLUtility;
 
 import javax.servlet.http.HttpServlet;
@@ -16,8 +15,7 @@ public class SensorCurrent extends HttpServlet {
 
     @Override
     public void doGet(HttpServletRequest request, HttpServletResponse resp) throws IOException {
-
-        List<SensorData> data = sql.getAllCurrentSensor();
+        List<SensorData> data = sql.getAllSensorCurrent();
         String json = new Gson().toJson(data);
         resp.addHeader("Access-Control-Allow-Origin","*");
         resp.setContentType("application/json");
