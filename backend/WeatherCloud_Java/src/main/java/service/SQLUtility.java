@@ -2,14 +2,9 @@ package service;
 
 
 
-import model.Location;
-import model.OverviewData;
-import model.WeatherData;
+import model.*;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.ResultSet;
-import java.sql.Statement;
+import java.sql.*;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
@@ -93,6 +88,55 @@ public class SQLUtility {
             }
         }
         return data;
+    }
+
+    public List<SensorData> getCurrentSensor(SensorID id, Boolean all){
+        String statement = "Select * from " + id.toString() + " order by date_created desc";
+        statement += (all) ? ";" : " limit 1;";
+        List<SensorData> data = new ArrayList<>();
+        try{
+            ResultSet rs = stmt.executeQuery(statement);
+            while(rs.next()){
+                data.add(new SensorData(rs.getTimestamp(1), rs.getString(2), rs.getDouble(3), rs.getDouble(4)));
+            }
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+        return data;
+
+    }
+
+    public List<SensorData> getAllCurrentSensor(){
+        List<SensorData> data = new ArrayList<>();
+        for(SensorID sid : SensorID.values()){
+            String statement = "Select * from " + sid.toString() + " order by date_created desc limit 1;";
+            try{
+                ResultSet rs = stmt.executeQuery(statement);
+                while(rs.next()){
+                    data.add(new SensorData(rs.getTimestamp(1), rs.getString(2), rs.getDouble(3), rs.getDouble(4)));
+                }
+            }catch(Exception e){
+                e.printStackTrace();
+            }
+        }
+        return data;
+    }
+
+    public void postSensorData(SensorData sensorData){
+        String statement = "INSERT INTO " + sensorData.getId() +
+                "(date_created, sensor_id, temperature, humidity) VALUES(?, ?, ?, ?);";
+        try{
+            PreparedStatement pstmt = db.prepareStatement(statement);
+            pstmt.setTimestamp(1, sensorData.getDate());
+            pstmt.setString(2, sensorData.getId());
+            pstmt.setDouble(3, sensorData.getTemp());
+            pstmt.setDouble(4, sensorData.getHum());
+            pstmt.execute();
+            System.out.println("Record inserted...");
+
+        }catch (Exception e){
+            e.printStackTrace();
+        }
     }
 
 

@@ -21,6 +21,17 @@
     </servlet>
 
     <servlet>
+        <servlet-name>servlet.ManageSensor</servlet-name>
+        <servlet-class>servlet.ManageSensor</servlet-class>
+    </servlet>
+
+    <servlet>
+        <servlet-name>servlet.SensorCurrent</servlet-name>
+        <servlet-class>servlet.SensorCurrent</servlet-class>
+    </servlet>
+
+
+    <servlet>
         <servlet-name>servlet.DefaultResponse</servlet-name>
         <servlet-class>servlet.DefaultResponse</servlet-class>
     </servlet>
@@ -38,6 +49,16 @@
     <servlet-mapping>
         <servlet-name>servlet.WeatherCache</servlet-name>
         <url-pattern>/weatherCache/*</url-pattern>
+    </servlet-mapping>
+
+    <servlet-mapping>
+        <servlet-name>servlet.ManageSensor</servlet-name>
+        <url-pattern>/sensorData/*</url-pattern>
+    </servlet-mapping>
+
+    <servlet-mapping>
+        <servlet-name>servlet.SensorCurrent</servlet-name>
+        <url-pattern>/sensorCurrent/*</url-pattern>
     </servlet-mapping>
 
     <servlet-mapping>
