@@ -5,8 +5,8 @@ import axios from 'axios';
 
 const StationOverview = () => {
 
-    var urlW = "http://localhost:3000/weatherCurrent/wohlen";
-    var urlL = "http://localhost:3000/weatherCurrent/lenzburg";
+    var urlW = "http://192.168.10.119:3000/weatherCurrent/wohlen";
+    var urlL = "http://192.168.10.119:3000/weatherCurrent/lenzburg";
 
     const[dataW, setDataW] = useState([]);
     const[dataL, setDataL] = useState([]);

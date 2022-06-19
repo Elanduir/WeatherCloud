@@ -4,7 +4,7 @@ import axios from 'axios';
 
 const WeatherData = () => {
 
-    var url = "http://localhost:3000/weatherCurrent/" ;
+    var url = "http://192.168.10.119:3000/weatherCurrent/" ;
 
     const[data, setData] = useState([]);
 
