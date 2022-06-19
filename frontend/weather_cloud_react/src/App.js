@@ -14,7 +14,10 @@ function App() {
   if(!isMobile){
     return (
       <div className='master'>
-        <h1>Weather Cloud</h1>
+        <div className='title'>
+          <h1>Weather Cloud</h1>
+        </div>
+
         <div className='content'>
           
           <div className="container">
