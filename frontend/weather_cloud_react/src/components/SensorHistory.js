@@ -1,5 +1,6 @@
 import { AgGridReact } from 'ag-grid-react';
 import 'ag-grid-community/dist/styles/ag-grid.css';
+import 'ag-grid-community/dist/styles/ag-theme-alpine-dark.css'
 import React, { useState, useEffect, useMemo} from 'react';
 import axios from 'axios';
 
@@ -42,9 +43,7 @@ const SensorHistory = () => {
   console.log(rowData);
 
   return (
-    <div className='history'>
-      <div className="ag-theme-alpine" style={{width: "100%", height: "200px"}}>
-
+      <div id='senHistoryGrid' className="sensorGrid">
       <AgGridReact
           rowData={rowData}
           columnDefs={columnDefs}
@@ -53,7 +52,7 @@ const SensorHistory = () => {
           rowSelection='multiple'
           />
       </div>
-    </div>
+
   )
 }
 

@@ -13,13 +13,16 @@ function App() {
 
   if(!isMobile){
     return (
-      <div>
+      <div className='master'>
+        <h1>Weather Cloud</h1>
         <div className='content'>
-          <h1>Weather Data</h1>
+          
           <div className="container">
             <div className='sensorDiv'>
               <SensorData/>
-              <SensorHistory/>
+              <div className='table'>
+                <SensorHistory/>
+              </div>
             </div>
             <div>
               <WeatherData/>
