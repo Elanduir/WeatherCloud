@@ -11,11 +11,14 @@ public enum Location {
     }
 
     public Location getByString(String loc){
-        return switch (loc) {
-            case "wohlen" -> WOHLEN;
-            case "lenzburg" -> LENZBURG;
-            default -> INVALID;
-        };
+        switch(loc){
+            case "wohlen":
+                return WOHLEN;
+            case "lenzburg":
+                return LENZBURG;
+            default:
+                return INVALID;
+        }
     }
 
     @Override
