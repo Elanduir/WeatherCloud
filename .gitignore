@@ -1,5 +1,7 @@
 **/target/
 **/.idea/
+!*/WeatherCloudAPI.jar
+!*/original-WeatherCloudAPI.jar
 
 # See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
 
