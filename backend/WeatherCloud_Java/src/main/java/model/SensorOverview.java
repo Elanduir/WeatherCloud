@@ -1,7 +1,5 @@
 package model;
 
-import java.sql.Timestamp;
-
 public class SensorOverview {
     final String date;
     final double s1_temp;

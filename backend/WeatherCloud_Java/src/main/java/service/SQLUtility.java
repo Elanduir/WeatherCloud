@@ -1,7 +1,4 @@
 package service;
-
-
-
 import model.*;
 
 import java.sql.*;
@@ -126,7 +123,6 @@ public class SQLUtility {
 
     public List<SensorOverview> getAllSensor(Boolean all){
         List<SensorOverview> data = new ArrayList<>();
-
         String statement = "select * from v_sensorOverview order by Date desc";
         statement += (all) ? ";" : " limit 1;";
         try{

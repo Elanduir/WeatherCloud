@@ -1,10 +1,7 @@
 package model;
 
-import java.sql.Date;
-import java.sql.Timestamp;
-
 public class SensorData {
-    final String timestamp;
+    String timestamp;
     final String id;
     final double temp;
     final double hum;
@@ -35,5 +32,9 @@ public class SensorData {
 
     public double getHum() {
         return hum;
+    }
+
+    public void setTimestamp(String timestamp) {
+        this.timestamp = timestamp;
     }
 }

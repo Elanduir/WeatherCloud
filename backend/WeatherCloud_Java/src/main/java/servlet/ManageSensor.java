@@ -7,14 +7,18 @@ import model.SensorOverview;
 import service.SQLUtility;
 
 import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
+@WebServlet(name = "ManageSensor", urlPatterns = {"/sensorData/*"})
 public class ManageSensor extends HttpServlet {
 
 
@@ -25,6 +29,7 @@ public class ManageSensor extends HttpServlet {
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String body = req.getReader().lines().collect(Collectors.joining());
         SensorData sensorData = new Gson().fromJson(body, SensorData.class);
+        sensorData.setTimestamp(new SimpleDateFormat("yyyy-MM-dd HH:mm:00").format(System.currentTimeMillis()));
         sql.postSensorData(sensorData);
     }
 
