@@ -20,7 +20,7 @@ const SensorHistory = () => {
     sortable: true
   }));
 
-  var url = "http://192.168.10.119:3000/sensorData/true" ;
+  var url = "http://192.168.10.73:3000/sensorData/true" ;
 
   const getData = async () => {
       try{

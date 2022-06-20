@@ -4,7 +4,7 @@ import axios from 'axios';
 
 const SensorData = () => {
 
-    var url = "http://192.168.10.119:3000/sensorCurrent/" ;
+    var url = "http://192.168.10.73:3000/sensorCurrent/" ;
 
     const[data, setData] = useState([]);
 
