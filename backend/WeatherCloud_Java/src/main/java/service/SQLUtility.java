@@ -27,7 +27,7 @@ public class SQLUtility {
         try{
             ResultSet rs = stmt.executeQuery(statement);
             rs.next();
-            return new WeatherData(loc, new SimpleDateFormat(PATTERN).format(rs.getTimestamp(1)), rs.getDouble(2), rs.getDouble(3), rs.getDouble(4));
+            return new WeatherData(loc, new SimpleDateFormat(PATTERN).format(rs.getTimestamp(1)), rs.getDouble(2), rs.getDouble(3), rs.getDouble(4), rs.getDouble(5));
         }catch(Exception e){
             e.printStackTrace();
         }
@@ -42,8 +42,8 @@ public class SQLUtility {
         try{
             ResultSet rs = stmt.executeQuery(statement);
             while(rs.next()){
-                wW = new WeatherData(Location.WOHLEN, new SimpleDateFormat(PATTERN).format(rs.getTimestamp(1)), rs.getDouble(2), rs.getDouble(3), rs.getDouble(4));
-                wL = new WeatherData(Location.LENZBURG, new SimpleDateFormat(PATTERN).format(rs.getTimestamp(1)), rs.getDouble(5), rs.getDouble(6), rs.getDouble(7));
+                wW = new WeatherData(Location.WOHLEN, new SimpleDateFormat(PATTERN).format(rs.getTimestamp(1)), rs.getDouble(2), rs.getDouble(3), rs.getDouble(4), rs.getDouble(5));
+                wL = new WeatherData(Location.LENZBURG, new SimpleDateFormat(PATTERN).format(rs.getTimestamp(1)), rs.getDouble(6), rs.getDouble(7), rs.getDouble(8), rs.getDouble(9));
                 OverviewData o = new OverviewData(wW, wL);
                 overview.add(o);
             }
@@ -60,7 +60,7 @@ public class SQLUtility {
         try{
             ResultSet rs = stmt.executeQuery(statement);
             while(rs.next()){
-                locationCache.add(new WeatherData(loc, new SimpleDateFormat(PATTERN).format(rs.getTimestamp(1)), rs.getDouble(2), rs.getDouble(3), rs.getDouble(4)));
+                locationCache.add(new WeatherData(loc, new SimpleDateFormat(PATTERN).format(rs.getTimestamp(1)), rs.getDouble(2), rs.getDouble(3), rs.getDouble(4), rs.getDouble(5)));
             }
         }catch(Exception e){
             e.printStackTrace();
@@ -76,7 +76,7 @@ public class SQLUtility {
                 try{
                     ResultSet rs = stmt.executeQuery(statement);
                     while(rs.next()){
-                        data.add(new WeatherData(loc, new SimpleDateFormat(PATTERN).format(rs.getTimestamp(1)), rs.getDouble(2), rs.getDouble(3), rs.getDouble(4)));
+                        data.add(new WeatherData(loc, new SimpleDateFormat(PATTERN).format(rs.getTimestamp(1)), rs.getDouble(2), rs.getDouble(3), rs.getDouble(4), rs.getDouble(5)));
                     }
                 }catch(Exception e){
                     e.printStackTrace();

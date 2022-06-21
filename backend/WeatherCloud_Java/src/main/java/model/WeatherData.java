@@ -10,14 +10,17 @@ public class WeatherData {
     final double humidity;
     final double pressure;
 
+    final double hdex;
+
     final String date;
 
-    public WeatherData(Location loc, String date, double temp, double humidity, double pressure){
+    public WeatherData(Location loc, String date, double temp, double humidity, double pressure, double hdex){
         this.loc = loc;
         this.date = date;
         this.temp = temp;
         this.humidity = humidity;
         this.pressure = pressure;
+        this.hdex = hdex;
     }
 
     public Location getLoc() {
@@ -38,5 +41,9 @@ public class WeatherData {
 
     public String getDate() {
         return date;
+    }
+
+    public double getHdex() {
+        return hdex;
     }
 }
