@@ -13,7 +13,7 @@ const SensorHistory = () => {
     {field: 's1_temp', headerName: "Sensor 1 Temp"},
     {field: 's1_hum', headerName: "Sensor 1 Hum"},
     {field: 's2_temp', headerName: "Sensor 2 Temp"},
-    {field: 's2_hum', headerName: "Sensor 1 Hum"}
+    {field: 's2_hum', headerName: "Sensor 2 Hum"}
   ]);
 
   const defaultColDef = useMemo( ()=> ({
