@@ -94,7 +94,7 @@ public class SQLUtility {
         try{
             ResultSet rs = stmt.executeQuery(statement);
             while(rs.next()){
-                data.add(new SensorData(new SimpleDateFormat(PATTERN).format(rs.getTimestamp(1)), rs.getString(2), rs.getDouble(3), rs.getDouble(4)));
+                data.add(new SensorData(new SimpleDateFormat(PATTERN).format(rs.getTimestamp(1)), rs.getString(2), rs.getDouble(3), rs.getDouble(4), rs.getDouble(5)));
             }
         }catch(Exception e){
             e.printStackTrace();
@@ -111,7 +111,7 @@ public class SQLUtility {
                 try{
                     ResultSet rs = stmt.executeQuery(statement);
                     while(rs.next()){
-                        data.add(new SensorData(new SimpleDateFormat(PATTERN).format(rs.getTimestamp(1)), rs.getString(2), rs.getDouble(3), rs.getDouble(4)));
+                        data.add(new SensorData(new SimpleDateFormat(PATTERN).format(rs.getTimestamp(1)), rs.getString(2), rs.getDouble(3), rs.getDouble(4), rs.getDouble(5)));
                     }
                 }catch(Exception e){
                     e.printStackTrace();
@@ -139,15 +139,16 @@ public class SQLUtility {
 
     public void postSensorData(SensorData sensorData){
         String statement = "INSERT INTO " + sensorData.getId() +
-                "(date_created, sensor_id, temperature, humidity) VALUES(?, ?, ?, ?);";
+                "(date_created, sensor_id, temperature, humidity, heatIndex) VALUES(?, ?, ?, ?, ?);";
         try{
             PreparedStatement pstmt = db.prepareStatement(statement);
             pstmt.setTimestamp(1, Timestamp.valueOf(sensorData.getDate()));
             pstmt.setString(2, sensorData.getId());
             pstmt.setDouble(3, sensorData.getTemp());
             pstmt.setDouble(4, sensorData.getHum());
+            pstmt.setDouble(5, sensorData.getHdex());
             pstmt.execute();
-            System.out.println("Record inserted...");
+            System.out.println(new SimpleDateFormat(PATTERN).format(System.currentTimeMillis()) + ": "+ sensorData.getId() + " Record inserted...");
 
         }catch (Exception e){
             e.printStackTrace();

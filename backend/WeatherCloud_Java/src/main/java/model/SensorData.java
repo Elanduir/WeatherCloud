@@ -6,11 +6,14 @@ public class SensorData {
     final double temp;
     final double hum;
 
-    public SensorData(String timestamp, String id, double temp, double hum) {
+    final double hdex;
+
+    public SensorData(String timestamp, String id, double temp, double hum, double hdex) {
         this.timestamp = timestamp;
         this.id = id;
         this.temp = temp;
         this.hum = hum;
+        this.hdex = hdex;
     }
 
     @Override
@@ -32,6 +35,10 @@ public class SensorData {
 
     public double getHum() {
         return hum;
+    }
+
+    public double getHdex() {
+        return hdex;
     }
 
     public void setTimestamp(String timestamp) {
