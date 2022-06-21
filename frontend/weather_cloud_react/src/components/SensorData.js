@@ -42,6 +42,10 @@ const SensorData = () => {
                             <td>Humidity</td>
                             <td>{element["hum"]}</td>
                         </tr>
+                        <tr>
+                            <td>Heat Index</td>
+                            <td>{element["hdex"]}</td>
+                        </tr>
                     </tbody>
                 </table>   
             </div>
