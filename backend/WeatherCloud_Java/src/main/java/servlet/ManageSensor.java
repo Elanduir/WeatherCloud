@@ -30,6 +30,7 @@ public class ManageSensor extends HttpServlet {
         String body = req.getReader().lines().collect(Collectors.joining());
         SensorData sensorData = new Gson().fromJson(body, SensorData.class);
         sensorData.setTimestamp(new SimpleDateFormat("yyyy-MM-dd HH:mm:00").format(System.currentTimeMillis()));
+        System.out.println(sensorData);
         sql.postSensorData(sensorData);
     }
 
