@@ -26,6 +26,8 @@ const WeatherData = () => {
         return () => clearInterval(interval);
     },[]);
 
+    console.log(data);
+
     const stations = [];
     data.forEach(element => {
         stations.push(
@@ -45,6 +47,10 @@ const WeatherData = () => {
                         <tr>
                             <td>Pressure</td>
                             <td>{element["pressure"]}</td>
+                        </tr>
+                        <tr>
+                            <td>Heat Index</td>
+                            <td>{element["hdex"]}</td>
                         </tr>
                     </tbody>
                 </table>   

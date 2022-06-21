@@ -43,7 +43,7 @@ const SensorHistory = () => {
   console.log(rowData);
 
   return (
-      <div id='senHistoryGrid' className="sensorGrid">
+      <div className="sensorGrid">
       <AgGridReact
           rowData={rowData}
           columnDefs={columnDefs}

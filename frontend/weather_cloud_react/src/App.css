@@ -75,9 +75,10 @@ h1 {
     align-items: stretch;
 }
 
-#senHistoryGrid{
-    height: 100%;
+.sensorGrid{
+    height: 90%;
     width: 100%;
+    padding: 1em;
     max-width: 1000px;
     max-height: 800px;
 
