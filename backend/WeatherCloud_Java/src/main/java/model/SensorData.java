@@ -18,7 +18,7 @@ public class SensorData {
 
     @Override
     public String toString(){
-        return id + "\n" + timestamp + "\n" + temp + "\n" + hum;
+        return id + "\n" + timestamp + "\n" + temp + "\n" + hum + "\n" + hdex;
     }
 
     public String getDate() {
