@@ -14,11 +14,11 @@ const SensorHistory = () => {
   const [rowData, setRowData] = useState();
 
   const [columnDefs, setColumnDefs] = useState([
-    { field: "date", headerName: "Date" },
-    { field: "s1_temp", headerName: "Sensor 1 Temp" },
-    { field: "s1_hum", headerName: "Sensor 1 Hum" },
-    { field: "s2_temp", headerName: "Sensor 2 Temp" },
-    { field: "s2_hum", headerName: "Sensor 2 Hum" },
+    { field: "date", headerName: "Date", width: 150 },
+    { field: "s1_temp", headerName: "Fabian Z. Temp", width: 125 },
+    { field: "s1_hum", headerName: "Fabian Z. Hum", width: 125 },
+    { field: "s2_temp", headerName: "Küche Temp", width: 125 },
+    { field: "s2_hum", headerName: "Küche 2 Hum", width: 125 },
   ]);
 
   const defaultColDef = useMemo(() => ({
