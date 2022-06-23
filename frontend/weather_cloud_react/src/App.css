@@ -19,7 +19,6 @@ table {
 .stations {
   display: flex;
   flex-direction: column;
-  padding: 10px;
 }
 
 .station {
@@ -28,8 +27,8 @@ table {
   border-radius: 5px;
   border-color: aqua;
   min-width: 11em;
-  padding: 10px;
-  margin: 10px;
+  padding: 1em;
+  margin: 1em;
 }
 
 .particles {
@@ -83,7 +82,7 @@ table {
 }
 
 .table {
-  padding: 10px;
+  padding: 1em;
   height: 100%;
   align-items: stretch;
 }
