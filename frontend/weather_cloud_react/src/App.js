@@ -12,6 +12,7 @@ import MobileSensorHistory from "./components/mobile/MobileSensorHistory";
 function App() {
   var width = useCheckMobileScreen();
   var isMobile = width < 900;
+  var isUnacceptable = width < 300;
 
   if (!isMobile) {
     return (
@@ -35,7 +36,7 @@ function App() {
         <ParticlesBackground className="particles" />
       </div>
     );
-  } else {
+  } else if (isMobile && !isUnacceptable) {
     return (
       <div className="master">
         <div className="mobileTitle">
@@ -46,6 +47,12 @@ function App() {
           <MobileSensorHistory />
         </div>
         <ParticlesBackground className="particles" />
+      </div>
+    );
+  } else {
+    return (
+      <div>
+        <h1>Get a real device mate</h1>
       </div>
     );
   }
