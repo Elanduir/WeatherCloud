@@ -9,7 +9,7 @@ import java.util.List;
 public class SQLUtility {
     Connection db;
     Statement stmt;
-    final String PATTERN = "MM.dd.yyyy HH:mm";
+    final String PATTERN = "dd.MM.yyyy HH:mm";
     public SQLUtility(){
         try{
             Class.forName("com.mysql.cj.jdbc.Driver");
