@@ -1,41 +1,36 @@
 import WeatherData from "./WeatherData";
-import React from 'react'
+import React from "react";
 import { useState, useEffect } from "react";
-import axios from 'axios';
+import axios from "axios";
 
 const StationOverview = () => {
+  var urlW = "http://192.168.10.73:3000/weatherCurrent/wohlen";
+  var urlL = "http://192.168.10.73:3000/weatherCurrent/lenzburg";
 
-    var urlW = "http://192.168.10.73:3000/weatherCurrent/wohlen";
-    var urlL = "http://192.168.10.73:3000/weatherCurrent/lenzburg";
+  const [dataW, setDataW] = useState([]);
+  const [dataL, setDataL] = useState([]);
 
-    const[dataW, setDataW] = useState([]);
-    const[dataL, setDataL] = useState([]);
+  useEffect(() => {
+    axios
+      .get(urlW)
+      .then((res) => {
+        if (res.data != null) {
+          setDataW(res.data);
+        }
+      })
+      .catch((err) => {
+        console.error(err);
+      });
+  }, []);
 
-    useEffect(() => {
-        console.log("hey");
-        axios.get(urlW)
-            .then(res =>{
-                console.log(res);
-                if(res.data != null){
-                    setDataW(res.data);
-                }
-            })
-            .catch(err =>{
-                console.error(err);
-            })
-        
-    },[]);
+  if (dataW != null) {
+    return (
+      <div>
+        <WeatherData data={dataW} />
+        <WeatherData data={dataL} />
+      </div>
+    );
+  }
+};
 
-    if(dataW != null){
-        return (
-            <div>
-                <WeatherData data={dataW}/>
-                <WeatherData data={dataL}/>
-
-            </div>
-        )
-    }
-    
-}
-
-export default StationOverview
+export default StationOverview;

@@ -2,7 +2,7 @@ import React from "react";
 import { useState, useEffect } from "react";
 import axios from "axios";
 
-const SensorData = () => {
+const MobileSensor = () => {
   var url = "http://192.168.10.73:3000/sensorCurrent/";
 
   const [data, setData] = useState([]);
@@ -31,24 +31,25 @@ const SensorData = () => {
   };
 
   const sensors = [];
-  data.forEach((element) => {
+  data.forEach((sensor) => {
     sensors.push(
-      <div className="station">
-        <h2>{names[element["id"]]}</h2>
-        <h4>{element["timestamp"].substring(11)}</h4>
-        <table>
+      <div className="mobileStation">
+        <h3>
+          {names[sensor["id"]]} - {sensor["timestamp"].substring(11)}
+        </h3>
+        <table className="mobileSensorTable">
           <tbody>
             <tr>
               <td>Temperature</td>
-              <td className="val">{element["temp"]}°C</td>
+              <td className="mVal">{sensor["temp"]}°C</td>
             </tr>
             <tr>
               <td>Humidity</td>
-              <td className="val">{element["hum"]}%</td>
+              <td className="mVal">{sensor["hum"]}%</td>
             </tr>
             <tr>
               <td>Heat Index</td>
-              <td className="val">{element["hdex"]}°C</td>
+              <td className="mVal">{sensor["hdex"]}°C</td>
             </tr>
           </tbody>
         </table>
@@ -56,7 +57,7 @@ const SensorData = () => {
     );
   });
 
-  return <div className="sensors">{sensors}</div>;
+  return <div className="mobileSensor">{sensors}</div>;
 };
 
-export default SensorData;
+export default MobileSensor;
