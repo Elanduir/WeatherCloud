@@ -4,10 +4,10 @@ import SensorData from "./components/SensorData";
 import WeatherData from "./components/WeatherData";
 import ParticlesBackground from "./components/ParticlesBackground";
 import SensorHistory from "./components/SensorHistory";
-import React, { useState, useEffect } from "react";
 import useCheckMobileScreen from "./services/CheckMobileScreen";
 import MobileSensor from "./components/mobile/MobileSensor";
 import MobileSensorHistory from "./components/mobile/MobileSensorHistory";
+import SensorChart from "./components/SensorChart";
 
 function App() {
   var width = useCheckMobileScreen();

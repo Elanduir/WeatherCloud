@@ -4,8 +4,9 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 
 const StationOverview = () => {
-  var urlW = "http://192.168.10.73:3000/weatherCurrent/wohlen";
-  var urlL = "http://192.168.10.73:3000/weatherCurrent/lenzburg";
+  var urlW = "http://192.168.10.30:8080/WeatherCloudAPI/weatherCurrent/wohlen";
+  var urlL =
+    "http://192.168.10.30:8080/WeatherCloudAPI/weatherCurrent/lenzburg";
 
   const [dataW, setDataW] = useState([]);
   const [dataL, setDataL] = useState([]);

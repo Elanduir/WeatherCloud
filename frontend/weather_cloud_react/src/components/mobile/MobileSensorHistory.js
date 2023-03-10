@@ -19,7 +19,7 @@ const MobileSensorHistory = () => {
     sortable: true,
   }));
 
-  var url = "http://192.168.10.73:3000/sensorData/true";
+  var url = "http://192.168.10.30:8080/WeatherCloudAPI/sensorData/true";
 
   const getData = async () => {
     try {

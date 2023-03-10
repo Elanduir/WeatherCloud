@@ -1,13 +1,7 @@
 import { AgGridReact } from "ag-grid-react";
 import "ag-grid-community/dist/styles/ag-grid.css";
 import "ag-grid-community/dist/styles/ag-theme-alpine-dark.css";
-import React, {
-  useState,
-  useEffect,
-  useMemo,
-  useRef,
-  useCallback,
-} from "react";
+import React, { useState, useEffect, useMemo } from "react";
 import axios from "axios";
 
 const SensorHistory = () => {
@@ -25,7 +19,7 @@ const SensorHistory = () => {
     resizable: true,
   }));
 
-  var url = "http://192.168.10.73:3000/sensorData/true";
+  var url = "http://192.168.10.30:8080/WeatherCloudAPI/sensorData/true";
 
   const getData = async () => {
     try {

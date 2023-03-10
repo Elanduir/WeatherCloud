@@ -3,7 +3,7 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 
 const SensorData = () => {
-  var url = "http://192.168.10.73:3000/sensorCurrent/";
+  var url = "http://192.168.10.30:8080/WeatherCloudAPI/sensorCurrent/";
 
   const [data, setData] = useState([]);
 
