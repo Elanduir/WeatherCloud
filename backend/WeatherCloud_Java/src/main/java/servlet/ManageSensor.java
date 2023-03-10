@@ -37,7 +37,7 @@ public class ManageSensor extends HttpServlet {
     @Override
     public void doGet(HttpServletRequest request, HttpServletResponse resp) throws IOException {
         String requestURL = request.getRequestURI();
-        String[] param = requestURL.substring("/sensorData/".length()).split("/");
+        String[] param = requestURL.substring("/WeatherCloudAPI/sensorData/".length()).split("/");
         SensorID id = SensorID.INVALID;
         boolean all = false;
         List<SensorOverview> dataOverview = new ArrayList<>();

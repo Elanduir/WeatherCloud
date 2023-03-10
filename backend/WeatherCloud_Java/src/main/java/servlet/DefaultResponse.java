@@ -36,7 +36,7 @@ public class DefaultResponse extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        resp.addHeader("Access-Control-Allow-Origin","*");
+        resp.addHeader("AccesssensorData-Control-Allow-Origin","*");
         resp.setContentType("application/json");
         resp.setCharacterEncoding("UTF-8");
         resp.getOutputStream().print(invalidRequest);
