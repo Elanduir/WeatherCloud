@@ -13,7 +13,7 @@ public class SQLUtility {
     public SQLUtility(){
         try{
             Class.forName("com.mysql.cj.jdbc.Driver");
-            this.db = DriverManager.getConnection("jdbc:mysql://192.168.10.73:3306/db_weather", "root", "wasser1");
+            this.db = DriverManager.getConnection("jdbc:mysql://192.168.10.30:3306/db_weather", "fabian", "weather");
             stmt = db.createStatement();
 
         }catch(Exception e){
